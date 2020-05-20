@@ -122,9 +122,9 @@ class GestureRecognizer extends Component {
   }
 
   _isValidHorizontalSwipe(gestureState) {
-    const { vx, dy } = gestureState;
+    const { vx, dy, dx } = gestureState;
     const { velocityThreshold, directionalOffsetThreshold } = this.swipeConfig;
-    return isValidSwipe(vx, velocityThreshold, dy, directionalOffsetThreshold);
+    return Math.abs(dx) > Math.abs(dy) && isValidSwipe(vx, velocityThreshold, dy, directionalOffsetThreshold);
   }
 
   _isValidVerticalSwipe(gestureState) {
